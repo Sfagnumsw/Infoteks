@@ -1,0 +1,12 @@
+C:\Users\Sfagnum\Documents\обучение\Программирование\C#\InfoTeKS\InfoteksTest\Infoteks.Services\bin\Debug\net6.0\Infoteks.Services.deps.json
+C:\Users\Sfagnum\Documents\обучение\Программирование\C#\InfoTeKS\InfoteksTest\Infoteks.Services\bin\Debug\net6.0\Infoteks.Services.dll
+C:\Users\Sfagnum\Documents\обучение\Программирование\C#\InfoTeKS\InfoteksTest\Infoteks.Services\bin\Debug\net6.0\Infoteks.Services.pdb
+C:\Users\Sfagnum\Documents\обучение\Программирование\C#\InfoTeKS\InfoteksTest\Infoteks.Services\obj\Debug\net6.0\Infoteks.Services.csproj.AssemblyReference.cache
+C:\Users\Sfagnum\Documents\обучение\Программирование\C#\InfoTeKS\InfoteksTest\Infoteks.Services\obj\Debug\net6.0\Infoteks.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Sfagnum\Documents\обучение\Программирование\C#\InfoTeKS\InfoteksTest\Infoteks.Services\obj\Debug\net6.0\Infoteks.Services.AssemblyInfoInputs.cache
+C:\Users\Sfagnum\Documents\обучение\Программирование\C#\InfoTeKS\InfoteksTest\Infoteks.Services\obj\Debug\net6.0\Infoteks.Services.AssemblyInfo.cs
+C:\Users\Sfagnum\Documents\обучение\Программирование\C#\InfoTeKS\InfoteksTest\Infoteks.Services\obj\Debug\net6.0\Infoteks.Services.csproj.CoreCompileInputs.cache
+C:\Users\Sfagnum\Documents\обучение\Программирование\C#\InfoTeKS\InfoteksTest\Infoteks.Services\obj\Debug\net6.0\Infoteks.Services.dll
+C:\Users\Sfagnum\Documents\обучение\Программирование\C#\InfoTeKS\InfoteksTest\Infoteks.Services\obj\Debug\net6.0\refint\Infoteks.Services.dll
+C:\Users\Sfagnum\Documents\обучение\Программирование\C#\InfoTeKS\InfoteksTest\Infoteks.Services\obj\Debug\net6.0\Infoteks.Services.pdb
+C:\Users\Sfagnum\Documents\обучение\Программирование\C#\InfoTeKS\InfoteksTest\Infoteks.Services\obj\Debug\net6.0\ref\Infoteks.Services.dll

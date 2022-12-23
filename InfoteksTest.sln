@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InfoteksTest", "InfoteksTest\InfoteksTest.csproj", "{F5203897-ECBF-43FD-AE34-5B11978F28AF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DAL", "DAL", "{0DBD46B3-B49C-43E1-9D89-F66FFD576442}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{B9B50F68-FD3B-40F9-9024-DF995C7CAD51}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{89CD0BB9-614C-4FA2-A44F-BC3B6B855A76}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infoteks.DAL", "Infoteks.DAL\Infoteks.DAL.csproj", "{396F2705-B59E-429D-9A6B-3E327A254C27}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infoteks.Domain", "Infoteks.Domain\Infoteks.Domain.csproj", "{176DCE42-3520-4B9A-95C3-D9413DA4E7E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infoteks.Services", "Infoteks.Services\Infoteks.Services.csproj", "{F5E5AC66-58D0-41CF-91BE-F52FBFD9E137}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F5203897-ECBF-43FD-AE34-5B11978F28AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5203897-ECBF-43FD-AE34-5B11978F28AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5203897-ECBF-43FD-AE34-5B11978F28AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5203897-ECBF-43FD-AE34-5B11978F28AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{396F2705-B59E-429D-9A6B-3E327A254C27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{396F2705-B59E-429D-9A6B-3E327A254C27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{396F2705-B59E-429D-9A6B-3E327A254C27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{396F2705-B59E-429D-9A6B-3E327A254C27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{176DCE42-3520-4B9A-95C3-D9413DA4E7E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{176DCE42-3520-4B9A-95C3-D9413DA4E7E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{176DCE42-3520-4B9A-95C3-D9413DA4E7E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{176DCE42-3520-4B9A-95C3-D9413DA4E7E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5E5AC66-58D0-41CF-91BE-F52FBFD9E137}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5E5AC66-58D0-41CF-91BE-F52FBFD9E137}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5E5AC66-58D0-41CF-91BE-F52FBFD9E137}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5E5AC66-58D0-41CF-91BE-F52FBFD9E137}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{396F2705-B59E-429D-9A6B-3E327A254C27} = {0DBD46B3-B49C-43E1-9D89-F66FFD576442}
+		{176DCE42-3520-4B9A-95C3-D9413DA4E7E6} = {B9B50F68-FD3B-40F9-9024-DF995C7CAD51}
+		{F5E5AC66-58D0-41CF-91BE-F52FBFD9E137} = {89CD0BB9-614C-4FA2-A44F-BC3B6B855A76}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E4BADDC2-52E5-44B4-83CD-060AE45C3099}
+	EndGlobalSection
+EndGlobal

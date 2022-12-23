@@ -1,0 +1,15 @@
+C:\Users\Sfagnum\Documents\обучение\Программирование\C#\InfoTeKS\InfoteksTest\Infoteks.Domain\bin\Debug\net6.0\Infoteks.Domain.deps.json
+C:\Users\Sfagnum\Documents\обучение\Программирование\C#\InfoTeKS\InfoteksTest\Infoteks.Domain\bin\Debug\net6.0\Infoteks.Domain.dll
+C:\Users\Sfagnum\Documents\обучение\Программирование\C#\InfoTeKS\InfoteksTest\Infoteks.Domain\bin\Debug\net6.0\Infoteks.Domain.pdb
+C:\Users\Sfagnum\Documents\обучение\Программирование\C#\InfoTeKS\InfoteksTest\Infoteks.Domain\bin\Debug\net6.0\Infoteks.Services.dll
+C:\Users\Sfagnum\Documents\обучение\Программирование\C#\InfoTeKS\InfoteksTest\Infoteks.Domain\bin\Debug\net6.0\Infoteks.Services.pdb
+C:\Users\Sfagnum\Documents\обучение\Программирование\C#\InfoTeKS\InfoteksTest\Infoteks.Domain\obj\Debug\net6.0\Infoteks.Domain.csproj.AssemblyReference.cache
+C:\Users\Sfagnum\Documents\обучение\Программирование\C#\InfoTeKS\InfoteksTest\Infoteks.Domain\obj\Debug\net6.0\Infoteks.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Sfagnum\Documents\обучение\Программирование\C#\InfoTeKS\InfoteksTest\Infoteks.Domain\obj\Debug\net6.0\Infoteks.Domain.AssemblyInfoInputs.cache
+C:\Users\Sfagnum\Documents\обучение\Программирование\C#\InfoTeKS\InfoteksTest\Infoteks.Domain\obj\Debug\net6.0\Infoteks.Domain.AssemblyInfo.cs
+C:\Users\Sfagnum\Documents\обучение\Программирование\C#\InfoTeKS\InfoteksTest\Infoteks.Domain\obj\Debug\net6.0\Infoteks.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Sfagnum\Documents\обучение\Программирование\C#\InfoTeKS\InfoteksTest\Infoteks.Domain\obj\Debug\net6.0\Infoteks.Domain.csproj.CopyComplete
+C:\Users\Sfagnum\Documents\обучение\Программирование\C#\InfoTeKS\InfoteksTest\Infoteks.Domain\obj\Debug\net6.0\Infoteks.Domain.dll
+C:\Users\Sfagnum\Documents\обучение\Программирование\C#\InfoTeKS\InfoteksTest\Infoteks.Domain\obj\Debug\net6.0\refint\Infoteks.Domain.dll
+C:\Users\Sfagnum\Documents\обучение\Программирование\C#\InfoTeKS\InfoteksTest\Infoteks.Domain\obj\Debug\net6.0\Infoteks.Domain.pdb
+C:\Users\Sfagnum\Documents\обучение\Программирование\C#\InfoTeKS\InfoteksTest\Infoteks.Domain\obj\Debug\net6.0\ref\Infoteks.Domain.dll

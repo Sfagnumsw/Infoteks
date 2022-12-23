@@ -1,0 +1,91 @@
+{
+  "version": 3,
+  "targets": {
+    "net6.0": {
+      "Infoteks.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Infoteks.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Infoteks.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Infoteks.Domain/1.0.0": {
+      "type": "project",
+      "path": "../Infoteks.Domain/Infoteks.Domain.csproj",
+      "msbuildProject": "../Infoteks.Domain/Infoteks.Domain.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net6.0": [
+      "Infoteks.Domain >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Sfagnum\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\Sfagnum\\Documents\\обучение\\Программирование\\C#\\InfoTeKS\\InfoteksTest\\Infoteks.Services\\Infoteks.Services.csproj",
+      "projectName": "Infoteks.Services",
+      "projectPath": "C:\\Users\\Sfagnum\\Documents\\обучение\\Программирование\\C#\\InfoTeKS\\InfoteksTest\\Infoteks.Services\\Infoteks.Services.csproj",
+      "packagesPath": "C:\\Users\\Sfagnum\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Sfagnum\\Documents\\обучение\\Программирование\\C#\\InfoTeKS\\InfoteksTest\\Infoteks.Services\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\Sfagnum\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net6.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "projectReferences": {
+            "C:\\Users\\Sfagnum\\Documents\\обучение\\Программирование\\C#\\InfoTeKS\\InfoteksTest\\Infoteks.Domain\\Infoteks.Domain.csproj": {
+              "projectPath": "C:\\Users\\Sfagnum\\Documents\\обучение\\Программирование\\C#\\InfoTeKS\\InfoteksTest\\Infoteks.Domain\\Infoteks.Domain.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net6.0": {
+        "targetAlias": "net6.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
