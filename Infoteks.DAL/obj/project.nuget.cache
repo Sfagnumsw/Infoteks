@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "axoEWiVXCLJ0e4PWVJVOz2dxeD5EnU9bO9eEaKeqoks/9Cn9pCnzCwiUyLtFjyGWEE7ClkunFS1fx/VUV16+Lw==",
+  "dgSpecHash": "vcGfnKUnwUSAU2E9+rvjLLa8pfKnVih6X236WOLlkhhoy2uDKKTlcEG/9AbGt78KvkavXURVjjUr9yiaNCUqKA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Sfagnum\\Documents\\обучение\\Программирование\\C#\\InfoTeKS\\InfoteksTest\\Infoteks.DAL\\Infoteks.DAL.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Sfagnum\\.nuget\\packages\\csvhelper\\30.0.1\\csvhelper.30.0.1.nupkg.sha512",
     "C:\\Users\\Sfagnum\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Sfagnum\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.12\\microsoft.entityframeworkcore.6.0.12.nupkg.sha512",
     "C:\\Users\\Sfagnum\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\6.0.12\\microsoft.entityframeworkcore.abstractions.6.0.12.nupkg.sha512",

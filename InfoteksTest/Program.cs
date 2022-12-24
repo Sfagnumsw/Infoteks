@@ -19,7 +19,6 @@ namespace InfoteksTest
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
-
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
@@ -27,7 +26,6 @@ namespace InfoteksTest
             }
 
             app.UseHttpsRedirection();
-
             app.UseAuthorization();
             app.MapControllers();
 

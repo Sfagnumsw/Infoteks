@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "/yZylSmEptctalalwCh4os/rADbRHag7Bd+V3Xn5Nm89RMMo9b30+6qWG7ILliQzYlnU0YBqDjt08TrfqGRoPA==",
+  "dgSpecHash": "x96FKn/cTuYnkKj5uDPmYcFGUYmiN109XMQP2Y+Ls0Y5lOBpQwQniRaTViekpmT3ZDYVCaNxU+V5LSWgj4Xnvg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Sfagnum\\Documents\\обучение\\Программирование\\C#\\InfoTeKS\\InfoteksTest\\Infoteks.Domain\\Infoteks.Domain.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Sfagnum\\.nuget\\packages\\csvhelper\\30.0.1\\csvhelper.30.0.1.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -20,8 +20,4 @@
     <ProjectReference Include="..\Infoteks.DAL\Infoteks.DAL.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>

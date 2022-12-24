@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Infoteks.DAL\Infoteks.DAL.csproj" />
     <ProjectReference Include="..\Infoteks.Domain\Infoteks.Domain.csproj" />
   </ItemGroup>
 

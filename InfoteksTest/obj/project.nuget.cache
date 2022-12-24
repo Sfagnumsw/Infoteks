@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "mUQHbRjUhxVUl3WFz2Uceuq2qDZp03rzCaTq7xJvmfuGR/5uzDEJzquI62o/vCzwTL3mZoAKlmWGzkxveM956A==",
+  "dgSpecHash": "vbwZY4Sa1BsKD2Ea9pV2TfDRMtJHPz77/oFYOOZX9miWVZ20flJXD/HHi1sO2ZXNc6+wxk0sVgDKAcJYWUhhEQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Sfagnum\\Documents\\обучение\\Программирование\\C#\\InfoTeKS\\InfoteksTest\\InfoteksTest\\InfoteksTest.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Sfagnum\\.nuget\\packages\\csvhelper\\30.0.1\\csvhelper.30.0.1.nupkg.sha512",
     "C:\\Users\\Sfagnum\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Sfagnum\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\Sfagnum\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
