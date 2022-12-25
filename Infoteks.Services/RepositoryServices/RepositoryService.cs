@@ -8,10 +8,13 @@ using Infoteks.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Infoteks.DAL.Interfaces;
 using CsvHelper;
+using CsvHelper.Configuration;
+using System.Globalization;
+using Infoteks.Domain.Helpers.ClassMapCsvHelper;
 
 namespace Infoteks.Services.RepositoryServices
 {
-    internal class RepositoryService : IFilteringRepositoryService
+    public class RepositoryService : IFilteringRepositoryService
     {
         private readonly IResultsRepository resultsRepository;
         private readonly IValuesRepository valuesRepository;
@@ -20,16 +23,9 @@ namespace Infoteks.Services.RepositoryServices
             this.resultsRepository = resultsRepository;
             this.valuesRepository = valuesRepository;
         }
-        public async Task FileRegistration(IFormFile file)
+        public async Task<IEnumerable<CsvFileItem>> FileRegistration(IFormFile file)
         {
-            using MemoryStream memoryStream = new MemoryStream(new byte[file.Length]);
-            await file.CopyToAsync(memoryStream);
-            memoryStream.Position = 0;
-            using (StreamReader reader = new StreamReader(memoryStream))
-            using (CsvReader csvReader = new CsvReader(reader, System.Globalization.CultureInfo.InvariantCulture))
-            {
-                var records = csvReader.GetRecordsAsync<>(); //TODO
-            }
+            return await ParseCsvInValuesModel(file);
         }
 
         public Task<string> GetJsonResults(string fileName)
@@ -65,6 +61,26 @@ namespace Infoteks.Services.RepositoryServices
         public Task<IEnumerable<Values>> GetValues()
         {
             throw new NotImplementedException();
-        } 
+        }
+
+        //Private methods
+
+        private async Task<IEnumerable<CsvFileItem>> ParseCsvInValuesModel(IFormFile csvFile) //TODO
+        {
+            using MemoryStream memoryStream = new MemoryStream(new byte[csvFile.Length]);
+            await csvFile.CopyToAsync(memoryStream);
+            memoryStream.Position = 0;
+            var config = new CsvConfiguration(CultureInfo.GetCultureInfo("ru-RU"))
+            {
+                Delimiter = ";"
+            };
+            using (StreamReader reader = new StreamReader(memoryStream))
+            using (CsvReader csvReader = new CsvReader(reader, config))
+            {
+                csvReader.Context.RegisterClassMap<CsvFileItemClassMap>();
+                var records = csvReader.GetRecords<CsvFileItem>().ToList();
+                return records;
+            }
+        }
     }
 }

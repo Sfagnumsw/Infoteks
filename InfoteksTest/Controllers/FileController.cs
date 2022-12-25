@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Infoteks.Domain.Entities;
+using Infoteks.Services.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 namespace InfoteksTest.Controllers
 {
@@ -6,16 +8,19 @@ namespace InfoteksTest.Controllers
     [ApiController]
     public class FileController : ControllerBase
     {
-        [HttpPost("AddFile")]
-        public IEnumerable<string> AddFile(IFormFile file)
+        private readonly IFilteringRepositoryService repositoryService;
+        public FileController(IFilteringRepositoryService repositoryService, IWebHostEnvironment webHostEnvironment)
         {
-            return new string[] { "value1", "value2" };
+            this.repositoryService = repositoryService;
+            this.webHostEnvironment = webHostEnvironment;
         }
 
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpPost]
+        [Route("AddFile")]
+        public async Task<CsvFileItem> AddFile(IFormFile file)
         {
-            return "value";
+            var a = await repositoryService.FileRegistration(file);
+            return a.First();
         }
     }
 }

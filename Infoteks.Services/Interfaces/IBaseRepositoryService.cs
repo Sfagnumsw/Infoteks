@@ -5,7 +5,7 @@ namespace Infoteks.Services.Interfaces
 {
     public interface IBaseRepositoryService
     {
-        Task FileRegistration(IFormFile file);
+        Task<IEnumerable<CsvFileItem>> FileRegistration(IFormFile file);
         Task<string> GetJsonResults();
         Task<IEnumerable<Values>> GetValues();
     }

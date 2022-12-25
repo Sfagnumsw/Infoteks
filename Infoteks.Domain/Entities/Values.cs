@@ -1,4 +1,4 @@
-﻿using Infoteks.Domain.Helpers;
+﻿using Infoteks.Domain.Helpers.AttributesValidation;
 using System.ComponentModel.DataAnnotations;
 
 namespace Infoteks.Domain.Entities

@@ -10,3 +10,8 @@ C:\Users\Sfagnum\Documents\обучение\Программирование\C#\
 C:\Users\Sfagnum\Documents\обучение\Программирование\C#\InfoTeKS\InfoteksTest\Infoteks.Services\obj\Debug\net6.0\refint\Infoteks.Services.dll
 C:\Users\Sfagnum\Documents\обучение\Программирование\C#\InfoTeKS\InfoteksTest\Infoteks.Services\obj\Debug\net6.0\Infoteks.Services.pdb
 C:\Users\Sfagnum\Documents\обучение\Программирование\C#\InfoTeKS\InfoteksTest\Infoteks.Services\obj\Debug\net6.0\ref\Infoteks.Services.dll
+C:\Users\Sfagnum\Documents\обучение\Программирование\C#\InfoTeKS\InfoteksTest\Infoteks.Services\bin\Debug\net6.0\Infoteks.DAL.dll
+C:\Users\Sfagnum\Documents\обучение\Программирование\C#\InfoTeKS\InfoteksTest\Infoteks.Services\bin\Debug\net6.0\Infoteks.Domain.dll
+C:\Users\Sfagnum\Documents\обучение\Программирование\C#\InfoTeKS\InfoteksTest\Infoteks.Services\bin\Debug\net6.0\Infoteks.DAL.pdb
+C:\Users\Sfagnum\Documents\обучение\Программирование\C#\InfoTeKS\InfoteksTest\Infoteks.Services\bin\Debug\net6.0\Infoteks.Domain.pdb
+C:\Users\Sfagnum\Documents\обучение\Программирование\C#\InfoTeKS\InfoteksTest\Infoteks.Services\obj\Debug\net6.0\Infoteks.Services.csproj.CopyComplete

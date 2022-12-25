@@ -8,15 +8,18 @@
     ".NETCoreApp,Version=v6.0": {
       "Infoteks.Domain/1.0.0": {
         "dependencies": {
-          "Infoteks.Services": "1.0.0"
+          "CsvHelper": "30.0.1"
         },
         "runtime": {
           "Infoteks.Domain.dll": {}
         }
       },
-      "Infoteks.Services/1.0.0": {
+      "CsvHelper/30.0.1": {
         "runtime": {
-          "Infoteks.Services.dll": {}
+          "lib/net6.0/CsvHelper.dll": {
+            "assemblyVersion": "30.0.0.0",
+            "fileVersion": "30.0.1.0"
+          }
         }
       }
     }
@@ -27,10 +30,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Infoteks.Services/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
+    "CsvHelper/30.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rcZtgbWR+As4G3Vpgx0AMNmShGuQLFjkHAPIIflzrfkJCx8/AOd4m96ZRmiU1Wi39qS5UVjV0P8qdgqOo5Cwyg==",
+      "path": "csvhelper/30.0.1",
+      "hashPath": "csvhelper.30.0.1.nupkg.sha512"
     }
   }
 }

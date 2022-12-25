@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Infoteks.DAL\Infoteks.DAL.csproj" />
+    <ProjectReference Include="..\Infoteks.Services\Infoteks.Services.csproj" />
   </ItemGroup>
 
 </Project>

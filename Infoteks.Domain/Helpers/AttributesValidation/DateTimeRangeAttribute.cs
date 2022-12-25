@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Infoteks.Domain.Helpers
+namespace Infoteks.Domain.Helpers.AttributesValidation
 {
     public class DateTimeRangeAttribute : RangeAttribute
     {
