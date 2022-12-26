@@ -9,18 +9,17 @@ namespace InfoteksTest.Controllers
     public class FileController : ControllerBase
     {
         private readonly IFilteringRepositoryService repositoryService;
-        public FileController(IFilteringRepositoryService repositoryService, IWebHostEnvironment webHostEnvironment)
+        public FileController(IFilteringRepositoryService repositoryService)
         {
             this.repositoryService = repositoryService;
-            this.webHostEnvironment = webHostEnvironment;
         }
 
         [HttpPost]
         [Route("AddFile")]
-        public async Task<CsvFileItem> AddFile(IFormFile file)
+        public async Task<IEnumerable<Values>> AddFile(IFormFile file)
         {
             var a = await repositoryService.FileRegistration(file);
-            return a.First();
+            return a;
         }
     }
 }

@@ -23,7 +23,7 @@ namespace Infoteks.Services.RepositoryServices
             this.resultsRepository = resultsRepository;
             this.valuesRepository = valuesRepository;
         }
-        public async Task<IEnumerable<CsvFileItem>> FileRegistration(IFormFile file)
+        public async Task<IEnumerable<Values>> FileRegistration(IFormFile file)
         {
             return await ParseCsvInValuesModel(file);
         }
@@ -65,20 +65,22 @@ namespace Infoteks.Services.RepositoryServices
 
         //Private methods
 
-        private async Task<IEnumerable<CsvFileItem>> ParseCsvInValuesModel(IFormFile csvFile) //TODO
+        private async Task<IEnumerable<Values>> ParseCsvInValuesModel(IFormFile csvFile)
         {
             using MemoryStream memoryStream = new MemoryStream(new byte[csvFile.Length]);
             await csvFile.CopyToAsync(memoryStream);
             memoryStream.Position = 0;
-            var config = new CsvConfiguration(CultureInfo.GetCultureInfo("ru-RU"))
-            {
-                Delimiter = ";"
-            };
+            var config = new CsvConfiguration(CultureInfo.GetCultureInfo("ru-RU")) { Delimiter = ";" };
             using (StreamReader reader = new StreamReader(memoryStream))
             using (CsvReader csvReader = new CsvReader(reader, config))
             {
                 csvReader.Context.RegisterClassMap<CsvFileItemClassMap>();
-                var records = csvReader.GetRecords<CsvFileItem>().ToList();
+                var records = csvReader.GetRecords<Values>().ToList();
+                foreach(var i in records)
+                {
+                    i.Id = Guid.NewGuid();
+                    i.FileName = csvFile.FileName;
+                }
                 return records;
             }
         }

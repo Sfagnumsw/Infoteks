@@ -1,20 +1,34 @@
-﻿using CsvHelper.Configuration;
+﻿using CsvHelper;
+using CsvHelper.Configuration;
 using Infoteks.Domain.Entities;
-using Infoteks.Domain.Helpers.AttributesValidation;
 
 namespace Infoteks.Domain.Helpers.ClassMapCsvHelper
 {
-    public class CsvFileItemClassMap : ClassMap<CsvFileItem>
+    public class CsvFileItemClassMap : ClassMap<Values>
     {
         public CsvFileItemClassMap() 
         {
-            Map(p => p.Date).Name("Дата");
-            Map(p => p.CompletionTime).Name("Время выполнения");
-            Map(p => p.Indicator).Name("Показатель");
+            Map(p => p.Date).Name("Дата").Validate(field => ValidateDate(field)).TypeConverter<CsvHelper.TypeConversion.DateTimeConverter>().TypeConverterOption.Format("yyyy-MM-dd_hh-mm-ss");
+            Map(p => p.CompletionTime).Name("Время выполнения").Validate(field => ValidateCompletionTime(field));
+            Map(p => p.Indicator).Name("Показатель").Validate(field => ValidateIndicator(field));
+        }
+        private static bool ValidateDate(ValidateArgs date)
+        {
+            DateTime minDate = DateTime.Parse("2000-01-01");
+            DateTime inputDate = DateTime.ParseExact(date.Field, "yyyy-MM-dd_hh-mm-ss", System.Globalization.CultureInfo.InvariantCulture);
+            return inputDate < minDate ? false : true;
+        }
 
-            Map(p => p.Date).TypeConverter<CsvHelper.TypeConversion.DateTimeConverter>().TypeConverterOption.Format("yyyy-MM-dd_hh-mm-ss");
+        private static bool ValidateCompletionTime(ValidateArgs completionTime) 
+        {
+            int inputTime = int.Parse(completionTime.Field);
+            return inputTime < 0 ? false : true;
+        }
 
-            Map(p => p.Date).Validate();//TODO
+        private static bool ValidateIndicator(ValidateArgs indicator)
+        {
+            double inputIndicator = double.Parse(indicator.Field, System.Globalization.CultureInfo.GetCultureInfo("ru-RU"));
+            return inputIndicator < 0 ? false : true;
         }
     }
 }
