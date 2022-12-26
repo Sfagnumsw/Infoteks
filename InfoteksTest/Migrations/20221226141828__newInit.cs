@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace InfoteksTest.Migrations
 {
-    public partial class _NewInit : Migration
+    public partial class _newInit : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,11 +15,11 @@ namespace InfoteksTest.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     FileName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    AllTime = table.Column<int>(type: "int", nullable: false),
+                    AllTime = table.Column<TimeSpan>(type: "time", nullable: false),
                     FirstOperation = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    AverageCompletionTime = table.Column<int>(type: "int", nullable: false),
+                    AverageCompletionTime = table.Column<double>(type: "float", nullable: false),
                     AverageIndicator = table.Column<double>(type: "float", nullable: false),
-                    MedianIndicator = table.Column<double>(type: "float", nullable: false),
+                    MedianIndicators = table.Column<double>(type: "float", nullable: false),
                     MaxIndicator = table.Column<double>(type: "float", nullable: false),
                     MinIndicator = table.Column<double>(type: "float", nullable: false),
                     CountString = table.Column<int>(type: "int", nullable: false)

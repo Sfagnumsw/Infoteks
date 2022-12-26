@@ -28,11 +28,11 @@ namespace InfoteksTest.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("AllTime")
-                        .HasColumnType("int");
+                    b.Property<TimeSpan>("AllTime")
+                        .HasColumnType("time");
 
-                    b.Property<int>("AverageCompletionTime")
-                        .HasColumnType("int");
+                    b.Property<double>("AverageCompletionTime")
+                        .HasColumnType("float");
 
                     b.Property<double>("AverageIndicator")
                         .HasColumnType("float");
@@ -49,7 +49,7 @@ namespace InfoteksTest.Migrations
                     b.Property<double>("MaxIndicator")
                         .HasColumnType("float");
 
-                    b.Property<double>("MedianIndicator")
+                    b.Property<double>("MedianIndicators")
                         .HasColumnType("float");
 
                     b.Property<double>("MinIndicator")

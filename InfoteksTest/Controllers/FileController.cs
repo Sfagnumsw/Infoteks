@@ -16,7 +16,7 @@ namespace InfoteksTest.Controllers
 
         [HttpPost]
         [Route("AddFile")]
-        public async Task<IEnumerable<Values>> AddFile(IFormFile file)
+        public async Task<Infoteks.Domain.Entities.Results> AddFile(IFormFile file)
         {
             var a = await repositoryService.FileRegistration(file);
             return a;
