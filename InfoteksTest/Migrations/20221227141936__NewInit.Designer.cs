@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InfoteksTest.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20221226141828__newInit")]
-    partial class _newInit
+    [Migration("20221227141936__NewInit")]
+    partial class _NewInit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -30,11 +30,12 @@ namespace InfoteksTest.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<TimeSpan>("AllTime")
-                        .HasColumnType("time");
+                    b.Property<string>("AllTime")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("AverageCompletionTime")
-                        .HasColumnType("float");
+                    b.Property<int>("AverageCompletionTime")
+                        .HasColumnType("int");
 
                     b.Property<double>("AverageIndicator")
                         .HasColumnType("float");

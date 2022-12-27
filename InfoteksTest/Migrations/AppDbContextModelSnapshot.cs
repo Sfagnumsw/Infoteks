@@ -28,11 +28,12 @@ namespace InfoteksTest.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<TimeSpan>("AllTime")
-                        .HasColumnType("time");
+                    b.Property<string>("AllTime")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("AverageCompletionTime")
-                        .HasColumnType("float");
+                    b.Property<int>("AverageCompletionTime")
+                        .HasColumnType("int");
 
                     b.Property<double>("AverageIndicator")
                         .HasColumnType("float");

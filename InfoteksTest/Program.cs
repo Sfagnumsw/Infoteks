@@ -5,6 +5,7 @@ using Infoteks.Services.Interfaces;
 using Infoteks.Services.RepositoryServices;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using NLog.Extensions.Logging;
 
 namespace InfoteksTest
 {
@@ -16,6 +17,8 @@ namespace InfoteksTest
         {
             var builder = WebApplication.CreateBuilder(args);
             builder.Configuration.Bind("Project", new Config());
+            builder.Logging.ClearProviders();
+            builder.Logging.AddNLog();
 
             builder.Services.AddScoped<IResultsRepository, EF_ResultsRepository>();
             builder.Services.AddScoped<IValuesRepository, EF_ValuesRepository>();

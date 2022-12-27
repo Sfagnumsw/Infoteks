@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Infoteks.Domain.Entities
 {
@@ -11,13 +6,14 @@ namespace Infoteks.Domain.Entities
     {
         public Guid Id { get; set; }
         public string? FileName { get; set; }
-        public TimeSpan AllTime { get; set; }
+        public string AllTime { get; set; }
         public DateTime FirstOperation { get; set; }
-        public double AverageCompletionTime { get; set; }
+        public int AverageCompletionTime { get; set; }
         public double AverageIndicator { get; set; }
         public double MedianIndicators { get; set; }
         public double MaxIndicator { get; set; }
         public double MinIndicator { get; set; }
+        [Range(1,10000)]
         public int CountString { get; set; }
     }
 }

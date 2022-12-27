@@ -31,6 +31,11 @@ namespace Infoteks.DAL.Repositories
             await _context.SaveChangesAsync();
         }
 
+        public async Task<IEnumerable<Values>> GetOnFileName(string fileName)
+        {
+            return await _context.Values.Where(i => i.FileName.Equals(fileName)).ToListAsync();
+        }
+
         private void Deteching(Guid id)
         {
             var local = _context.Set<Values>().Local.FirstOrDefault(i => i.Id == id);

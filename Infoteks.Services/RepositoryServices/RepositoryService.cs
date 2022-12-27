@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Infoteks.Domain.Entities;
+﻿using Infoteks.Domain.Entities;
 using Infoteks.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Infoteks.DAL.Interfaces;
@@ -11,6 +6,8 @@ using CsvHelper;
 using CsvHelper.Configuration;
 using System.Globalization;
 using Infoteks.Domain.Helpers.ClassMapCsvHelper;
+using Microsoft.Extensions.Logging;
+using System.Text.Json;
 
 namespace Infoteks.Services.RepositoryServices
 {
@@ -18,64 +15,67 @@ namespace Infoteks.Services.RepositoryServices
     {
         private readonly IResultsRepository resultsRepository;
         private readonly IValuesRepository valuesRepository;
-        public RepositoryService(IResultsRepository resultsRepository, IValuesRepository valuesRepository)
+        private static ILogger logger;
+        public RepositoryService(IResultsRepository resultsRepository, IValuesRepository valuesRepository, ILogger<RepositoryService> _logger)
         {
             this.resultsRepository = resultsRepository;
             this.valuesRepository = valuesRepository;
-        }
-        public async Task<Results> FileRegistration(IFormFile csvFile)
-        {
-            var values = await ParseCsvInValuesModel(csvFile);
-            var results = ResultsModelFormation(values);
-            return results;
+            logger = _logger;
         }
 
-        public Task<string> GetJsonResults(string fileName)
+        public async Task FileRegistration(IFormFile csvFile)
         {
-            throw new NotImplementedException();
+            await TrySaveInDb(csvFile);
         }
 
-        public Task<string> GetJsonResults(DateTime firstOperationTime)
+        public async Task<string> GetJsonResults(string fileName)
         {
-            throw new NotImplementedException();
+            return await TrySerializeRezult(fileName);
         }
 
-        public Task<string> GetJsonResults(double averageIndicator)
+        public async Task<string> GetJsonResults(DateTime firstOperationTime)
         {
-            throw new NotImplementedException();
+            return await TrySerializeRezult(firstOperationTime);
         }
 
-        public Task<string> GetJsonResults(int averageCompletionTime)
+        public async Task<string> GetJsonResults(double averageIndicator)
         {
-            throw new NotImplementedException();
+            return await TrySerializeRezult(averageIndicator);
         }
 
-        public Task<string> GetJsonResults()
+        public async Task<string> GetJsonResults(int averageCompletionTime)
         {
-            throw new NotImplementedException();
+            return await TrySerializeRezult(averageCompletionTime);
         }
 
-        public Task<Values> GetValues(string fileName)
+        public async Task<string> GetJsonResults()
         {
-            throw new NotImplementedException();
+            return await TrySerializeRezult();
         }
 
-        public Task<IEnumerable<Values>> GetValues()
+        public async Task<IEnumerable<Values>> GetValues(string fileName)
         {
-            throw new NotImplementedException();
+            return await TryGetValues(fileName);
+        }
+
+        public async Task<IEnumerable<Values>> GetValues()
+        {
+            return await TryGetValues();
         }
 
         //Private methods//
 
-        private async Task TrySaveInDataBase(IFormFile csvFile) //TODO
+        private async Task TrySaveInDb(IFormFile csvFile)
         {
             try
             {
-
+                var values = await ParseCsvInValuesModel(csvFile);
+                var results = ResultsModelFormation(values);
+                await SaveOrOverwrite(values, results);
             }
-            catch
+            catch (Exception ex)
             {
-
+                logger.LogInformation(ex.Message);
             }
         }
 
@@ -99,13 +99,13 @@ namespace Infoteks.Services.RepositoryServices
             }
         }
 
-        private Results ResultsModelFormation(IEnumerable<Values> values)
+        private Domain.Entities.Results ResultsModelFormation(IEnumerable<Values> values)
         {
-            Results results = new Results()
+            Domain.Entities.Results results = new Domain.Entities.Results()
             {
                 Id = Guid.NewGuid(),
                 FileName = values.First().FileName,
-                AllTime = CalculateAllTime(values),
+                AllTime = CalculateAllTime(values).ToString("dd'|'hh'|'mm'|'ss"),
                 FirstOperation = CalculateFirstOperation(values),
                 AverageCompletionTime = CalculateAverageCompletionTime(values),
                 AverageIndicator = CalculateAverageIndicator(values),
@@ -129,7 +129,7 @@ namespace Infoteks.Services.RepositoryServices
             return dates.Min();
         }
 
-        private double CalculateAverageCompletionTime(IEnumerable<Values> values)
+        private int CalculateAverageCompletionTime(IEnumerable<Values> values)
         {
             int[] time = FormationCompletionTimeArray(values);
             int sum = 0;
@@ -193,6 +193,124 @@ namespace Infoteks.Services.RepositoryServices
                 array[i++] = v.CompletionTime;
             } 
             return array;
+        }
+
+        private async Task<bool> CheckForFileName(string fileName)
+        {
+            var relevant = await resultsRepository.GetOnFileName(fileName);
+            return relevant != null ? true : false;
+        }
+
+        private async Task SaveOrOverwrite(IEnumerable<Values> values, Domain.Entities.Results results)
+        {
+            if (await CheckForFileName(results.FileName))
+            {
+                var dbValues = await valuesRepository.GetOnFileName(results.FileName);
+                var dbResults = await resultsRepository.GetOnFileName(results.FileName);
+                foreach (var v in dbValues) await valuesRepository.Remove(v.Id);
+                await resultsRepository.Remove(dbResults.Id);
+            }
+            foreach (var v in values) await valuesRepository.Save(v);
+            await resultsRepository.Save(results);
+        }
+
+        private async Task<string> TrySerializeRezult(string fileName)
+        {
+            try
+            {
+                var results = await resultsRepository.GetOnFileName(fileName);
+                return JsonSerializer.Serialize<Domain.Entities.Results>(results);
+            }
+            catch (Exception ex)
+            {
+                logger.LogInformation(ex.Message);
+                return ex.Message;
+            }
+        }
+
+        private async Task<string> TrySerializeRezult(DateTime firstOperation)
+        {
+            try
+            {
+                var results = await resultsRepository.Get();
+                var result = results.FirstOrDefault(i => i.FirstOperation.Equals(firstOperation));
+                return JsonSerializer.Serialize<Domain.Entities.Results>(result);
+            }
+            catch (Exception ex)
+            {
+                logger.LogInformation(ex.Message);
+                return ex.Message;
+            }
+        }
+
+        private async Task<string> TrySerializeRezult(double averageIndicator)
+        {
+            try
+            {
+                var results = await resultsRepository.Get();
+                var result = results.FirstOrDefault(i => i.AverageIndicator.Equals(averageIndicator));
+                return JsonSerializer.Serialize<Domain.Entities.Results>(result);
+            }
+            catch (Exception ex)
+            {
+                logger.LogInformation(ex.Message);
+                return ex.Message;
+            }
+        }
+
+        private async Task<string> TrySerializeRezult(int averageCompletionTime)
+        {
+            try
+            {
+                var results = await resultsRepository.Get();
+                var result = results.FirstOrDefault(i => i.AverageCompletionTime.Equals(averageCompletionTime));
+                return JsonSerializer.Serialize<Domain.Entities.Results>(result);
+            }
+            catch (Exception ex)
+            {
+                logger.LogInformation(ex.Message);
+                return ex.Message;
+            }
+        }
+
+        private async Task<string> TrySerializeRezult()
+        {
+            try
+            {
+                var results = await resultsRepository.Get();
+                return JsonSerializer.Serialize<IEnumerable<Domain.Entities.Results>>(results);
+            }
+            catch (Exception ex)
+            {
+                logger.LogInformation(ex.Message);
+                return ex.Message;
+            }
+        }
+
+        private async Task<IEnumerable<Values>> TryGetValues(string fileName)
+        {
+            try
+            {
+                return await valuesRepository.GetOnFileName(fileName);
+            }
+            catch (Exception ex)
+            {
+                logger.LogInformation(ex.Message);
+                return new List<Values>();
+            }
+        }
+
+        private async Task<IEnumerable<Values>> TryGetValues()
+        {
+            try
+            {
+                return await valuesRepository.Get();
+            }
+            catch (Exception ex)
+            {
+                logger.LogInformation(ex.Message);
+                return new List<Values>();
+            }
         }
     }
 }

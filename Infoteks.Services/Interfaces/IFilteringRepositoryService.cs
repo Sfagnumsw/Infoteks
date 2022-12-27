@@ -8,6 +8,6 @@ namespace Infoteks.Services.Interfaces
         Task<string> GetJsonResults(DateTime firstOperationTime);
         Task<string> GetJsonResults(double averageIndicator);
         Task<string> GetJsonResults(int averageCompletionTime);
-        Task<Values> GetValues(string fileName);
+        Task<IEnumerable<Values>> GetValues(string fileName);
     }
 }

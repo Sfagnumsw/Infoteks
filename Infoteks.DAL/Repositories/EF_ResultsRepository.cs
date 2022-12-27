@@ -2,11 +2,6 @@
 using Infoteks.DAL.Interfaces;
 using Infoteks.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infoteks.DAL.Repositories
 {
@@ -31,6 +26,11 @@ namespace Infoteks.DAL.Repositories
         {
             await _context.Results.AddAsync(model);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<Results> GetOnFileName(string fileName)
+        {
+            return await _context.Results.FirstOrDefaultAsync(i => i.FileName.Equals(fileName));
         }
 
         private void Deteching(Guid id)
