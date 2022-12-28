@@ -8,14 +8,14 @@ namespace Infoteks.Domain.Helpers.ClassMapCsvHelper
     {
         public CsvFileItemClassMap() 
         {
-            Map(p => p.Date).Name("Дата").Validate(field => ValidateDate(field)).TypeConverter<CsvHelper.TypeConversion.DateTimeConverter>().TypeConverterOption.Format("yyyy-MM-dd_hh-mm-ss");
+            Map(p => p.Date).Name("Дата").Validate(field => ValidateDate(field)).TypeConverter<CsvHelper.TypeConversion.DateTimeConverter>().TypeConverterOption.Format("yyyy-MM-dd_HH-mm-ss");
             Map(p => p.CompletionTime).Name("Время выполнения").Validate(field => ValidateCompletionTime(field));
             Map(p => p.Indicator).Name("Показатель").Validate(field => ValidateIndicator(field));
         }
         private static bool ValidateDate(ValidateArgs date)
         {
-            DateTime minDate = DateTime.Parse("2000-01-01");
-            DateTime inputDate = DateTime.ParseExact(date.Field, "yyyy-MM-dd_hh-mm-ss", System.Globalization.CultureInfo.InvariantCulture);
+            DateTime minDate = DateTime.ParseExact("2000-01-01_00-00-00", "yyyy-MM-dd_HH-mm-ss", System.Globalization.CultureInfo.InvariantCulture);
+            DateTime inputDate = DateTime.ParseExact(date.Field, "yyyy-MM-dd_HH-mm-ss", System.Globalization.CultureInfo.InvariantCulture);
             return inputDate < minDate ? false : true;
         }
 

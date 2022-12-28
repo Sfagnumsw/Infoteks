@@ -15,10 +15,10 @@ namespace Infoteks.DAL.Repositories
 
         public async Task<IEnumerable<Results>> Get() => await _context.Results.ToListAsync();
 
-        public async Task Remove(Guid id)
+        public async Task Remove(Results result)
         {
-            Deteching(id);
-            _context.Remove(new Results { Id = id });
+            Deteching(result.Id);
+            _context.Remove(result);
             await _context.SaveChangesAsync();
         }
 

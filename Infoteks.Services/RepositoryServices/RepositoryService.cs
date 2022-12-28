@@ -8,6 +8,7 @@ using System.Globalization;
 using Infoteks.Domain.Helpers.ClassMapCsvHelper;
 using Microsoft.Extensions.Logging;
 using System.Text.Json;
+using Infoteks.Domain.Helpers.Exceptions;
 
 namespace Infoteks.Services.RepositoryServices
 {
@@ -75,27 +76,36 @@ namespace Infoteks.Services.RepositoryServices
             }
             catch (Exception ex)
             {
-                logger.LogInformation(ex.Message);
+                logger.LogError(ex.Message);
             }
+        }
+
+        private async Task<CsvReader> GetCsvReaderObject(IFormFile csvFile)
+        {
+            MemoryStream memoryStream = new MemoryStream(new byte[csvFile.Length]);
+            await csvFile.CopyToAsync(memoryStream);
+            memoryStream.Position = 0;
+            var config = new CsvConfiguration(CultureInfo.GetCultureInfo("ru-RU")) { Delimiter = ";" };
+            StreamReader reader = new StreamReader(memoryStream);
+            return new CsvReader(reader, config);
         }
 
         private async Task<IEnumerable<Values>> ParseCsvInValuesModel(IFormFile csvFile)
         {
-            using MemoryStream memoryStream = new MemoryStream(new byte[csvFile.Length]);
-            await csvFile.CopyToAsync(memoryStream);
-            memoryStream.Position = 0;
-            var config = new CsvConfiguration(CultureInfo.GetCultureInfo("ru-RU")) { Delimiter = ";" };
-            using (StreamReader reader = new StreamReader(memoryStream))
-            using (CsvReader csvReader = new CsvReader(reader, config))
+            using (var csvReader = await GetCsvReaderObject(csvFile))
             {
                 csvReader.Context.RegisterClassMap<CsvFileItemClassMap>();
                 var records = csvReader.GetRecords<Values>().ToList();
-                foreach(var i in records)
+                if (records.Count != 0)
                 {
-                    i.Id = Guid.NewGuid();
-                    i.FileName = csvFile.FileName;
+                    foreach (var i in records)
+                    {
+                        i.Id = Guid.NewGuid();
+                        i.FileName = csvFile.FileName;
+                    }
+                    return records;
                 }
-                return records;
+                else throw new EmptyScvException("Method: ParseCsvInValuesModel | Message: CsvFile is empty") { };
             }
         }
 
@@ -207,8 +217,8 @@ namespace Infoteks.Services.RepositoryServices
             {
                 var dbValues = await valuesRepository.GetOnFileName(results.FileName);
                 var dbResults = await resultsRepository.GetOnFileName(results.FileName);
-                foreach (var v in dbValues) await valuesRepository.Remove(v.Id);
-                await resultsRepository.Remove(dbResults.Id);
+                foreach (var v in dbValues) await valuesRepository.Remove(v);
+                await resultsRepository.Remove(dbResults);
             }
             foreach (var v in values) await valuesRepository.Save(v);
             await resultsRepository.Save(results);
@@ -233,8 +243,8 @@ namespace Infoteks.Services.RepositoryServices
             try
             {
                 var results = await resultsRepository.Get();
-                var result = results.FirstOrDefault(i => i.FirstOperation.Equals(firstOperation));
-                return JsonSerializer.Serialize<Domain.Entities.Results>(result);
+                var result = results.Where(i => i.FirstOperation.Equals(firstOperation));
+                return JsonSerializer.Serialize<IEnumerable<Domain.Entities.Results>>(result);
             }
             catch (Exception ex)
             {
@@ -248,8 +258,8 @@ namespace Infoteks.Services.RepositoryServices
             try
             {
                 var results = await resultsRepository.Get();
-                var result = results.FirstOrDefault(i => i.AverageIndicator.Equals(averageIndicator));
-                return JsonSerializer.Serialize<Domain.Entities.Results>(result);
+                var result = results.Where(i => i.AverageIndicator.Equals(averageIndicator));
+                return JsonSerializer.Serialize<IEnumerable<Domain.Entities.Results>>(result);
             }
             catch (Exception ex)
             {
@@ -263,8 +273,8 @@ namespace Infoteks.Services.RepositoryServices
             try
             {
                 var results = await resultsRepository.Get();
-                var result = results.FirstOrDefault(i => i.AverageCompletionTime.Equals(averageCompletionTime));
-                return JsonSerializer.Serialize<Domain.Entities.Results>(result);
+                var result = results.Where(i => i.AverageCompletionTime.Equals(averageCompletionTime));
+                return JsonSerializer.Serialize<IEnumerable<Domain.Entities.Results>>(result);
             }
             catch (Exception ex)
             {

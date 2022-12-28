@@ -6,7 +6,7 @@ namespace Infoteks.DAL.Interfaces
     {
         Task Save(Values model);
         Task<IEnumerable<Values>> Get();
-        Task Remove(Guid id);
+        Task Remove(Values value);
         Task<IEnumerable<Values>> GetOnFileName(string fileName);
     }
 }

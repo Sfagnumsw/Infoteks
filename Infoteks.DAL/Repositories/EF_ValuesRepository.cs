@@ -24,10 +24,10 @@ namespace Infoteks.DAL.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task Remove(Guid id)
+        public async Task Remove(Values value)
         {
-            Deteching(id);
-            _context.Remove(new Values { Id = id});
+            Deteching(value.Id);
+            _context.Remove(value);
             await _context.SaveChangesAsync();
         }
 
